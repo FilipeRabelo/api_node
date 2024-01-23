@@ -2,25 +2,34 @@
   // userROutes - grupo de rotas do usuario
   // QUERY PARAMS - valores sao opcionais - iniciLI\nso o Router
 
-
-  const { Router }      = require("express")           // importação - trazendo o Router de dentro do express - desestruturando
-
+  // desestruturando express
+  const { Router }      = require("express")               // importação - trazendo o Router de dentro do express -
   const UsersController = require("../controllers/UsersController")   // importando o controller
 
-  const usersRoutes     = Router();                    // INICIALIZANDO O Router
+  const usersRoutes     = Router();                        // INICIALIZANDO O Router
 
 
+  // middleware
+  // criando uma funcao middleware p intecpeta a requisição e faz autentificações
+
+  function myMiddleware (request, response, next){          // consigo acessar a requisição, resposta e destino //
+
+    console.log("Voce passou pelo middlerewere")
+
+    if(!request.body.isAdmin){                              // validação, se for diferente do admin, message nao autorizado
+      return response.json({ message: "Nao autorizado" })   // return intemrrompe
+    }
+
+    next()                                                  // chama o destino - usersController.create)
+  }
 
 
+  const usersController = new UsersController();            // fazendo uma new - nova instacia
 
+  // rota 1° //
+  usersRoutes.post("/", myMiddleware, usersController.create); // criando a rota do users
 
-
-
-
-  const usersController = new UsersController();       // fazendo uma new - nova instacia
-
-  usersRoutes.post("/", usersController.create); // funcao p redirecionar e extrair a requisição // indentificar o endereço
-  module.exports        = usersRoutes;                 // EXPORTANDO esse arquivo para o server.js e todo mundo que quiser usar //
+  module.exports        = usersRoutes;                      // EXPORTANDO esse arquivo para o server.js e todo mundo que quiser usar //
 
 
 

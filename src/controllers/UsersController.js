@@ -8,17 +8,13 @@
         // CRIANDO UMA REQUISIÇÃO // CRIANDO O UsersController - USERS
         async create(request, response){                            // CRIANDO request - preciso de uma requisição e uma resposta
 
-            const {name, email, password} = request.body;           // obtendo info do requeste.body - corpo da requisição -desestruturando
-            response.status(201).json( { name, email, password } ); // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
+            const { name, email, password } = request.body;         // obtendo info do requeste.body - corpo da requisição -desestruturando
+            response.status(201).json({ name, email, password });   // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
         }
     }
 
     module.exports = UsersController;
 
-
-
-    // middleware //
-    // funcao que intecpeta a requisição e faz autentificações, d3evolve resposta, sabe o destino
 
 
     /* padrao - um controller pode ter no maximo 5 funções/metodos
