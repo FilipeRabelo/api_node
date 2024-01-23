@@ -20,7 +20,7 @@
   const usersController = new UsersController();       // fazendo uma new - nova instacia
 
   usersRoutes.post("/", usersController.create); // funcao p redirecionar e extrair a requisição // indentificar o endereço
-  module.exports        = usersRoutes;                 // EXPORTANDO esse arquivo para o server.js e todo q quier mundo usar //
+  module.exports        = usersRoutes;                 // EXPORTANDO esse arquivo para o server.js e todo mundo que quiser usar //
 
 
 

@@ -3,13 +3,13 @@
     // class permite que dentro dela EXISTA varias funções, a partir de uma class eu posso criar e acessar varias funções
 
 
-    class UsersController {                                       // a calsse sabe que o create é um novo metodo-funcao
+    class UsersController {                                         // a calsse sabe que o create é um novo metodo-funcao
 
         // CRIANDO UMA REQUISIÇÃO // CRIANDO O UsersController - USERS
-        async create(request, response){                          // CRIANDO request - preciso de uma requisição e uma resposta
+        async create(request, response){                            // CRIANDO request - preciso de uma requisição e uma resposta
 
-            const {name, email, password} = request.body;         // obtendo info do requeste.body - corpo da requisição -desestruturando
-            response.status(201).json({ name, email, password }); // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
+            const {name, email, password} = request.body;           // obtendo info do requeste.body - corpo da requisição -desestruturando
+            response.status(201).json( { name, email, password } ); // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
         }
     }
 

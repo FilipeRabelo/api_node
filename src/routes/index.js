@@ -1,6 +1,6 @@
   // ROTA - toda vez q acessar o users, vai ser redirecionado para usersRouter que é o grupo de rotas do usuario
 
-  // routes CONTEM todos as rotas da aplicação - usersROtas - grupo de rotas do usuario
+  // routes CONTEM todas as rotas da aplicação - usersROtas - grupo de rotas do usuario
 
   // missao do index.js é reuniar todas as rotas da aplicação q estao separadas por arquivos
 
@@ -14,7 +14,3 @@
   routes.use("/users", usersRoutes);               // usando a nova rota
 
   module.exports    = routes;                      // EXPORTANDO ROUTES - ROTAS DO USUARIO
-
-
-
-
