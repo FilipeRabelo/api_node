@@ -4,9 +4,6 @@
 
   // missao do index.js é reuniar todas as rotas da aplicação q estao separadas por arquivos
 
-
-
-
   const { Router }  = require("express")           // importando e desestruturando o Router do express
   const usersRoutes = require("./users.routes");   // importando o usersRouter do "./users.routes" - grupo de rotas do usuario
 
