@@ -6,25 +6,20 @@
 
   const { Router }      = require("express")                          // importação - trazendo o Router de dentro do express
   const UsersController = require("../controllers/UsersController")   // importando o controller
-
-  const myMiddlewere    = require("../middlewares/users_authentication");
   
   const usersRoutes     = Router();                                   // INICIALIZANDO O Router
   
-
-  // // middleware de autentificação
-  // function myMiddlewere (request, response, next){      // conseguimos extrair a requisição, a resposta e o next (destino da requisição)
-  //   console.log("Voce passou pelo middleware");
-  //   console.log(request.body);                          // para acessar o corpo da requisição
+  // middleware de autentificação
+  function myMiddlewere (request, response, next){      // conseguimos extrair a requisição, a resposta e o next (destino da requisição)
+    console.log("Voce passou pelo middleware");
+    console.log(request.body);                          // para acessar o corpo da requisição
    
-  //   if(!request.body.admin){                            // se for diferente de true -  se for false
-  //     return response.json({ message: "Msg do middleware - Acesso negado"}) // return para parar a funcao - message de retorno pelo middleware
-  //   }
+    if(!request.body.admin){                            // se for diferente de true -  se for false
+      return response.json({ message: "Msg do middleware - Acesso negado"}) // return para parar a funcao - message de retorno pelo middleware
+    }
 
-  //   next()                                              // funcao do middleware que chama a proxima funcao - DESTINO
-  // }
-  
-
+    next()                                              // funcao do middleware que chama a proxima funcao - DESTINO
+  }
 
   const usersController = new UsersController();                      // fazendo uma new - nova instacia
 
