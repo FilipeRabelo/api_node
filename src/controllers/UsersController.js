@@ -1,9 +1,13 @@
-    // PRIMEIRO CONTROLLER - CRIANDO A REQUISIÇÃO
-    // RESPONSAVEL POR PROCESSAR A REQUISIÇÃO     // REGRAS DE NEGOCIO
-    // class permite que dentro dela EXISTA varias funções, a partir de uma class eu posso criar e acessar varias funções
 
+    // PRIMEIRO CONTROLLER - CRIANDO A REQUISIÇÃO - RESPONSAVEL POR PROCESSAR A REQUISIÇÃO - REGRAS DE NEGOCIO
+    // class permite que dentro dela EXISTA varias funções, a partir de uma class eu posso criar e acessar varias funções
+    // CRIANDO UMA REQUISIÇÃO // CRIANDO O UsersController - USERS
+    // funcao p criar um usuario - class - objeto - a class sabe que o create é um novo metodo-funcao
+    // CRIANDO request - preciso de uma requisição e uma resposta
+    // obtendo info do requeste.body - corpo da requisição -desestruturando
+    // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
     /* padrao - um controller pode ter no maximo 5 funções/metodos
-        * index - get para listar varios registros. ex: todos os usuarios cadastrados - index. get    
+        * index - get para listar varios registros. ex: todos os usuarios cadastrados - index. get
         * show - GET para existir um registro específico - 2ex: um usuario específico
         * create - POST para criar um registro
         * update - PUT para atualiza rum registro
@@ -11,14 +15,20 @@
         ( padrao do controller - maximo 5 metodos )
     */
 
-    // CRIANDO UMA REQUISIÇÃO // CRIANDO O UsersController - USERS
-    // funcao p criar um usuario - class - objeto
 
-    class UsersController {                                     // a class sabe que o create é um novo metodo-funcao
-      create(request, response){                                // CRIANDO request - preciso de uma requisição e uma resposta
-        
-        const { name, email, password } = request.body;         // obtendo info do requeste.body - corpo da requisição -desestruturando
-        response.status(201).json({ name, email, password });   // devolvendo atraves de um json as info para o body - info que vao vim pelo corpo da requisição saõ JSON()
+    const AppError = require("../utils/AppError");    // app error para exibir algum tipo de error
+
+    class UsersController{
+      create(request, response){
+        const { name, email, password } = request.body;            // requisição
+
+        if(!name){               // estou tratando os erros
+            // throw new - exceção // se o nome nao existe vou lançaar uma exceção
+            throw new AppError("O nome é obrigatorio");    // criando a messegem
+
+        }
+
+        response.status(201).json({ name, email, password });     // respondendo
       }
     }
 
