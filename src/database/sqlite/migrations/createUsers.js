@@ -1,10 +1,11 @@
-
-  // CRIANDO A MIGRATIONS - TABELAS
-
+  // CRIANDO A MIGRATIONS - createUsers PARA CRIA AS TABELAS - AUTOMAÇÃO+
   // USAR A INTERPOLAÇÃO PARA FICAR MAIS FACIL DE ESCREVER
   // CODIGO QUE FARIA MANUALMENTE NO SGBD - FAZER COM JS
-
   // IF NOT EXISTS para criar a tabela SE ela nao existir!  (USERS)
+
+
+
+
   const createUsers = `   
 
     CREATE TABLE IF NOT EXISTS users(  
