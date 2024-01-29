@@ -31,7 +31,6 @@
   ///////////////////////////////      // Tratamento de ERROR        //////////////////////////////////////
 
 
-
   // antes da PORT preciso CAPTURAR o error, a requisição, a resposta e o next() através do app.use(()); //
   app.use((error,
             request,

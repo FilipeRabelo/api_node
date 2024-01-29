@@ -15,10 +15,8 @@
   // fazendo uma new - nova instacia
   const usersController = new UsersController();
 
-  // rota - funcao para criar (create) um usuario criando users - chamando o crete de dentro do controller
+  // NA RAIZ VAI SER CHAMADO O USERSCONTROLLER E DENTRO DO CONTROLER TEMOS O METODO CREATE
   usersRoutes.post("/", usersController.create);
-
-
 
 
 

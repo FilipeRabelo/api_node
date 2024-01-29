@@ -13,8 +13,8 @@
   // colocando a funcao dentro da variavel e criando a rota
   const routes= Router();
 
-  // usando a nova rota - Redirecionando para a rota do usuario
+  // usando a nova rota - Redirecionando para a rota do usuario - USERS.ROUTES.JS
   routes.use("/users", usersRoutes);
 
-  // EXPORTANDO ROUTES - ROTAS DO USUARIO
+  // EXPORTANDO ROUTES - ROTAS DO USUARIO - U
   module.exports = routes;
