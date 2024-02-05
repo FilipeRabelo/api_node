@@ -16,27 +16,27 @@
     */
 
 
+    // app error para exibir algum tipo de error
 
-    const AppError = require("../utils/AppError");    // app error para exibir algum tipo de error
-
+    const AppError = require("../utils/AppError");
     const sqliteConnection = require("../database/sqlite")
 
     class UsersController {
-      async create( request, response ){                 // METODO ASSINCRONO
-        const { name, email, password } = request.body;                  // requisição
 
-        const database = await sqliteConnection(); // await pq como vou conectar com o bd, esse precisa ser assincrono
+      async create( request, response ){                 // METODO ASSINCRONO
+
+        const { name, email, password } = request.body;                  // requisição
+        const database = await sqliteConnection();               // await pq como vou conectar com o bd, esse precisa ser assincrono
+
         const checkUsersExist  = await database.get("SELECT * FROM users WHERE email = (?)", [email]);
 
-        if(checkUsersExist){
+        if(checkUsersExist){                                             // VERIFICACAO SE EMAIL EXISTE
           throw new AppError("Este email ja esta em uso! ");
         }
 
-        return response.statusCode(201).json();
-
+        return response.status(201).json();
       }
     }
-
 
     module.exports = UsersController;
 
@@ -47,7 +47,7 @@
     // if(!name){                                                       // estou tratando os erros
     //
     //   // throw new - exceção // se o nome nao existe vou lançar uma exceção - MESSAGEM DE ERRO
-    //   throw new AppError("O nome é obrigatório");         // criando a messagem
+    //   throw new AppError("O nome é obrigatório");                    // criando a messagem
     // }
     //
     // response.status(201).json({ name, email, password });            // respondendo

@@ -1,8 +1,6 @@
-
   // CRIANDO O SERVIDOR - IMPORTANDO O EXPRESS
   // aqui que vamos configurar como ele vai lidar com o tratamento de EXCEÇÕES
   // antes de tudo importar o express-async-error
-
 
   // importando BIBLIOTECA DE ERROS express
   require("express-async-errors")
@@ -19,19 +17,19 @@
 
   const routes= require("./routes");
 
-  migrationsRun();                        // EXECUTANDO BD - o banco de dados
+  migrationsRun();                             // EXECUTANDO BD - o banco de dados
 
   const app  = express();     // INICIALIZANDO O EXPRESS EM APP p gerenciar as REQUISIÇÕES http
 
   // ATENÇÃO - ANTES DAS ROTAS - dizemos ao app q vamos usar o padrao json()
   app.use(express.json());
-  app.use(routes);                         // app deve usar essas rotas
+  app.use(routes);                            // app deve usar essas rotas
 
 
   ///////////////////////////////      // Tratamento de ERROR        //////////////////////////////////////
 
-
   // antes da PORT preciso CAPTURAR o error, a requisição, a resposta e o next() através do app.use(()); //
+
   app.use((error,
             request,
               response,
@@ -52,10 +50,11 @@
 
     return response.status(500).json({  // se nao for um erro do lado cliente, vou emitir um erro padrao como respota json({})
       status : "error",
-      message: "Internal server error"
+      message: "Internal server error (ERROR SERVIDOR)"
     });
 
   });
+
   ///////////////////////////////     // FIM - Tratamento de ERROR      //////////////////////////////////////
 
 
