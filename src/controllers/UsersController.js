@@ -22,15 +22,13 @@
     const sqliteConnection = require("../database/sqlite")
 
     class UsersController {
-
       async create( request, response ){                 // METODO ASSINCRONO
-
-        const { name, email, password } = request.body;                  // requisição
-        const database = await sqliteConnection();               // await pq como vou conectar com o bd, esse precisa ser assincrono
+        const { name, email, password } = request.body;  // requisição
+        const database = await sqliteConnection();       // await pq como vou conectar com o bd, esse precisa ser assincrono
 
         const checkUsersExist  = await database.get("SELECT * FROM users WHERE email = (?)", [email]);
 
-        if(checkUsersExist){                                             // VERIFICACAO SE EMAIL EXISTE
+        if(checkUsersExist){                             // VERIFICACAO SE EMAIL EXISTE
           throw new AppError("Este email ja esta em uso! ");
         }
 

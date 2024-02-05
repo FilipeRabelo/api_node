@@ -4,7 +4,8 @@
   // IF NOT EXISTS para criar a tabela SE ela nao existir!  (USERS)
 
 
-
+  // NOT EXISTS para se caso existir a tabela
+  // so vai criar a tabela se ela nao existir
 
   const createUsers = `   
 
@@ -17,6 +18,7 @@
       created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
       updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
+    
   `;
 
   module.exports = createUsers;
