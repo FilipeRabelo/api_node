@@ -88,3 +88,40 @@
       text-shadow: 0 0 40px rgba(0, 0, 255, 0.9); /* Sombra aumentada */
     }
   }
+
+
+  @media(max-width: 768px){
+
+    body{
+      background: url("https://w0.peakpx.com/wallpaper/696/255/HD-wallpaper-viking-vegviser-nordic-norse-vegviser-viking-thumbnail.jpg")
+      no-repeat center;
+      background-size: cover;
+      height: 100vh;
+      font-size: 1rem;
+    };
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
