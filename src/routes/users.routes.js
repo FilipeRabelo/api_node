@@ -3,22 +3,17 @@
   // QUERY PARAMS - valores sao opcionais - iniciLI\nso o Router
   // desestruturando express e importando as Router
 
-  // importação - trazendo o Router de dentro do express
-  const { Router } = require("express");
+  const { Router }       = require("express");                          // importação - trazendo o Router de dentro do express
+  const UsersController  = require("../controllers/UsersController");   // importando o CONTROLLER
 
-  // importando o CONTROLLER
-  const UsersController           = require("../controllers/UsersController");
-
-  // aqui esta as rotas // INICIALIZANDO O Router
-  const usersRoutes= Router();
-
-  // fazendo uma new - nova instacia
-  const usersController = new UsersController();
+  const usersRoutes      = Router();                                    // INICIALIZANDO O Router - aqui esta as rotas //
+  const usersController  = new UsersController();                       // fazendo uma new - nova instacia
 
   // NA RAIZ VAI SER CHAMADO O USERSCONTROLLER E DENTRO DO CONTROLER TEMOS O METODO CREATE
   usersRoutes.post("/", usersController.create);
 
-
-
-  // EXPORTANDO esse arquivo para o server
   module.exports = usersRoutes;
+
+  let nome = "Filipe"
+
+  console.log(nome);

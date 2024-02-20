@@ -11,13 +11,18 @@
 
   migrationsRun();            // EXECUTANDO BD - o banco de dados
 
-  const app  = express();     // INICIALIZANDO O EXPRESS EM APP p gerenciar as REQUISIÇÕES http
+  // INICIALIZANDO O EXPRESS EM APP p gerenciar as REQUISIÇÕES http
+  const app  = express();
 
   app.use(express.json());    // ATENÇÃO - ANTES DAS ROTAS - dizemos ao app q vamos usar o padrao json()
   app.use(routes);            // app deve usar essas rotas
 
-  // antes da PORT preciso CAPTURAR o error, a requisição, a resposta e o next() através do app.use(());
-  app.use((error, request, response, next) => {  // Tratamento de ERROR
+        // INICIO - Tratamento de ERROR //
+
+  app.use( (error,   // antes da PORT preciso CAPTURAR o error, a requisição, a resposta e o next() através do app.use(());
+            request,
+            response,
+            next) => {
 
     // se o erro for um instanceof - se a instancia dele for = a instacia do tipo = ao AppError, vai ser = error do lado do cliente
     if(error instanceof AppError){      // VERIFICANDO O ERROR quero saber se é um erro gerado pelo lado do cliente
@@ -30,7 +35,8 @@
 
     console.error(error); // debugar o erro caso eu precise
 
-    return response.status(500).json({  // se nao for um erro do lado cliente, vou emitir um erro padrao como respota json({})
+    // se nao for um erro do lado cliente, vou emitir um erro padrao como respota json({})
+    return response.status(500).json({
       status : "error",
       message: "Internal server error (ERROR SERVIDOR)"
     });
@@ -39,3 +45,31 @@
 
   const PORT= 3333;
   app.listen(PORT, () => console.log(`Server is running on Port ${PORT}`));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

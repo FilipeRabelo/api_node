@@ -1,0 +1,183 @@
+<!doctype html>
+
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport"
+					content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<title>Relógio</title>
+
+		<style>
+			body{
+				background: url("https://img.goodfon.com/wallpaper/big/e/8d/viking-viking-temnyy-fon-shlem.jpg") no-repeat fixed;
+				background-size: cover;
+				text-align: center;
+				width: auto;
+			}
+
+      .hide{
+        display: none;
+      }
+
+			.btnTimer{
+				background-color: #00FF00;
+				color: black;
+				font-weight: bold;
+				border: 2px solid #00FFFF;
+				font-size: 1rem;
+        border-radius: 5px;
+				cursor: pointer;
+        transition: color 1.0s;
+			}
+      .btnTimer:hover{
+        box-shadow: white;
+        color: rgba(0, 0, 255, 0.9);
+        transition: color 1.0s;
+      }
+
+			#btnExit{
+        cursor: pointer;
+        transition: color 1.0s;
+      }
+			#btnExit:hover{
+        box-shadow: white;
+        color: rgba(0, 0, 255, 0.9);
+        transition: color 1.0s;
+			}
+
+			#showTime{
+				color: #00FF00;
+				font-size: 1rem;
+				border: 1px solid #00FFFF;
+				border-radius: 5px;
+				background-color: black;
+				width: max-content;
+				margin:  0 auto 10px;
+				padding: 1px 10px;
+				transition: color 1.0s;
+			}
+			#showTime:hover{
+        box-shadow: white;
+        color: rgba(0, 0, 255, 0.9);
+        transition: color 1.0s;
+			}
+
+      .neon{
+        background: rgba(0, 0, 200, 0.3);
+        letter-spacing: 1px;
+        border: 2px solid rgba(0, 0, 200, 0.6);
+        border-radius: 10px;
+        box-shadow: 0 0 40px rgba(0, 0, 255, 0.9);
+        animation: pulse 1s infinite alternate;    /* Define a animação */
+      }
+      .neon:hover{
+        box-shadow: 0 0 20px rgba(0, 0, 255, 0.9); /* Efeito de luzes  */
+        color: rgba(0, 0, 255, 0.9);
+        transition: color 1.0s;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 20px rgba(0, 0, 255, 0.5);
+        }
+        100% {
+          box-shadow: 0 0 40px rgba(0, 0, 255, 0.9); /* Brilho aumentado */
+        }
+      }
+
+      .h1{
+        color: #00FFFF;
+        width: max-content;
+        margin:  0 auto 10px;
+        animation: pulseH1 1s infinite alternate; /* Aplica a animação de pulsação */
+      }
+
+      @keyframes pulseH1 {
+        0% {
+          text-shadow: 0 0 20px rgba(0, 0, 255, 0.5); /* Sombra inicial */
+        }
+        100% {
+          text-shadow: 0 0 40px rgba(0, 0, 255, 0.9); /* Sombra aumentada */
+        }
+      }
+
+		</style>
+		<link rel="stylesheet" href="../../../../00-CodigosExemplos/01-codigos_css_html/01-codigosTop/neon.css">
+	</head>
+
+	<body>
+
+		<h1 class="h1">
+			Relógio online
+		</h1>
+
+		<p class="hide neon" id="showTime">aqui vai aparecer o relogio</p>
+
+		<div class="container">
+			<button class="btnTimer" id="btnTimer">
+				Clique aqui
+			</button>
+
+			<button class="btnTimer hide" id="btnExit">
+				Sair...
+			</button>
+		</div>
+
+		<script>
+
+			const btnTimer = document.querySelector("#btnTimer");
+      btnTimer.addEventListener("click", btnTimerCLicked);
+
+      const btnExit = document.getElementById("btnExit");
+      btnExit.addEventListener("click", btnExitCLicked);
+
+			function btnTimerCLicked(){
+
+        document.getElementById("showTime").classList.toggle("hide");
+        getTimer();
+        document.getElementById("btnTimer").classList.toggle("hide");
+        document.getElementById("btnExit").classList.toggle("hide");
+			}
+
+      function btnExitCLicked(){
+
+        document.getElementById("showTime").classList.toggle("hide");
+        document.getElementById("btnExit").classList.toggle("hide");
+        document.getElementById("btnTimer").classList.toggle("hide");
+			}
+
+      function getTimer(){
+
+        const newTimer = new Date();
+
+        const hours = String(newTimer.getHours()).padStart(2, '0');
+        const mins  = String(newTimer.getMinutes()).padStart(2, '0');
+        const secs  = String(newTimer.getSeconds()).padStart(2, '0');
+        const timer = `${hours}:${mins}:${secs}`;
+
+        document.getElementById("showTime").innerHTML = timer;
+        console.log(`Data e hora atual: ${newTimer}`);
+        console.log(timer);
+			}
+
+      setInterval(getTimer, 1000)
+
+		</script>
+	</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

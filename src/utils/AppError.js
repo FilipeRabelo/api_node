@@ -4,7 +4,7 @@
   // toda class tem o metodo construtor - carregado automaticamente qndo a classe é instaciada
   // instanciar - criar um novo objeto do mesmo tipo da classe
   // constructor cria um novo objeto e inicia um objeot criado apartir de uma class
-  // bibliotecas para lidar com errors : npm install express-async-errors --save
+  // bibliotecas para lidar com errors: npm install express-async-errors --save
 
   // CLASSE DE ERROR
   class AppError{                              // criando a classe
